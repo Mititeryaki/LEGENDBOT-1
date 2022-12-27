@@ -21,5 +21,7 @@ class Development(Config):
     EXTERNAL_REPO = "https://github.com/LEGEND-AI/PLUGINS"
     EXTERNAL_REPOBRANCH = "main"
     UPSTREAM_REPO = "pro"
+    VCMODE = True
+    VC_SESSION = "1AZWarzoBu71TvpnUiO4BkIW0maj8Zsr0-r45iY4fSQ_fMf7W4plbaV5QSsJsHoFhOrZmxOYe2-XecXb_-KKXx3qMNjBAWAhu1eEFtPlOtaziOwyBdBBWc1im5yWOeaRkBoCh97yx9MMxUKBlFfNULsOXLzMevXd0-5D_-c53R0WOecZRs5G4nuRSa_G5aoe1LXdrmzhnJNLG4YDk0sRWwr9Uj7jRO_pVtVXD4BD4ug457JvDGPq1LRgxuo_19qbcNsX4_AuaXbE3KJ496VPc-VW8sQJWh5c99DFlHjUCz-fzIbD6AbETpiHzGv4zfRYHvh1U9sqOypRzMg9e3Y5hcBu3bbXQ34U="
     # Your City's TimeZone
     TZ = "Asia/Kolkata"
