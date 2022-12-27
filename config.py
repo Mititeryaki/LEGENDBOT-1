@@ -18,8 +18,8 @@ class Development(Config):
     # command hanler for sudo
     SUDO_HANDLER = "."
     # External plugins repo
-    EXTRA_REPO = "https://github.com/ITS-LEGENDBOT/PLUGINS"
-    EXTRA_REPOBRANCH = "main"
+    EXTERNAL_REPO = "https://github.com/LEGEND-AI/PLUGINS"
+    EXTERNAL_REPOBRANCH = "main"
     UPSTREAM_REPO = "pro"
     # Your City's TimeZone
     TZ = "Asia/Kolkata"
