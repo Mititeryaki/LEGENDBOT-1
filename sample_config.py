@@ -64,7 +64,18 @@ class Config(object):
     )
     # specify NO_LOAD with plugin names for not loading in userbot
     NO_LOAD = list(os.environ.get("NO_LOAD", "").split())
+    # for custom pic for .digitalpfp
+    DIGITAL_PIC = os.environ.get("DIGITAL_PIC", None)
+    # your default pic telegraph link
+    DEFAULT_PIC = os.environ.get("DEFAULT_PIC", None)
+    # set this with your default bio
+    DEFAULT_BIO = os.environ.get("DEFAULT_BIO", None)
+    # set this with your deafult name
+    DEFAULT_NAME = os.environ.get("DEFAULT_NAME", None)
     # specify command handler that should be used for the plugins
+    # For Your Channel  and Group
+    YOUR_GROUP = os.environ.get("YOUR_GROUP", None)
+    YOUR_CHANNEL = os.environ.get("YOUR_CHANNEL", None)
     # this should be a valid "regex" pattern
     HANDLER = os.environ.get("HANDLER", r".")
     SUDO_HANDLER = os.environ.get("SUDO_HANDLER", r".")
@@ -77,7 +88,9 @@ class Config(object):
     # progress bar progress
     FINISHED_PROGRESS_STR = os.environ.get("FINISHED_PROGRESS_STR", "▰")
     UNFINISHED_PROGRESS_STR = os.environ.get("UNFINISHED_PROGRESS_STR", "▱")
-
+    RANDOM_STUFF_API_KEY = os.environ.get("RANDOM_STUFF_API_KEY", None)
+    SPOTIFY_CLIENT_ID = os.environ.get("SPOTIFY_CLIENT_ID", None)
+    SPOTIFY_CLIENT_SECRET = os.environ.get("SPOTIFY_CLIENT_SECRET", None)
     # API VARS FOR USERBOT
     # Get your own ACCESS_KEY from http://api.screenshotlayer.com/api/capture for screen shot
     SCREEN_SHOT_LAYER_ACCESS_KEY = os.environ.get("SCREEN_SHOT_LAYER_ACCESS_KEY", None)
