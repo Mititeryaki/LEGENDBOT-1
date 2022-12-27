@@ -207,14 +207,6 @@ async def hekp():
         await legend(JoinChannelRequest("@LegendBot_AI"))
     except BaseException:
         pass
-    try:
-        await legend(LeaveChannelRequest("@Legend_Userbot"))
-    except BaseException:
-        pass
-    try:
-        await legend(LeaveChannelRequest("@Official_LegendBot"))
-    except BaseException:
-        pass
 
 
 async def scammer(username):
@@ -298,22 +290,23 @@ async def verifyLoggerGroup():
         sys.exit(0)
 
 
-async def install_extrarepo(repo, branch, efolder):
+async def install_externalrepo(repo, branch, cfolder):
     LEGENDREPO = repo
+    rpath = os.path.join(cfolder, "requirements.txt")
     if LEGENDBRANCH := branch:
         repourl = os.path.join(LEGENDREPO, f"tree/{LEGENDBRANCH}")
-        gcmd = f"git clone -b {LEGENDBRANCH} {LEGENDREPO} {efolder}"
-        errtext = f"There is no branch with name `{LEGENDBRANCH}` in your external repo {LEGENDREPO}. Recheck branch name and correct it in vars(`EXTRA_REPOBRANCH`)"
+        gcmd = f"git clone -b {LEGENDBRANCH} {LEGENDREPO} {cfolder}"
+        errtext = f"There is no branch with name `{LEGENDBRANCH}` in your external repo {LEGENDREPO}. Recheck branch name and correct it in vars(`EXTERNAL_REPO_BRANCH`)"
     else:
         repourl = LEGENDREPO
-        gcmd = f"git clone {LEGENDREPO} {efolder}"
+        gcmd = f"git clone {LEGENDREPO} {cfolder}"
         errtext = f"The link({LEGENDREPO}) you provided for `EXTERNAL_REPO` in vars is invalid. please recheck that link"
     response = urllib.request.urlopen(repourl)
     if response.code != 200:
         LOGS.error(errtext)
         return await legend.tgbot.send_message(BOTLOG_CHATID, errtext)
     await runcmd(gcmd)
-    if not os.path.exists(efolder):
+    if not os.path.exists(cfolder):
         LOGS.error(
             "There was a problem in cloning the external repo. please recheck external repo link"
         )
@@ -321,7 +314,6 @@ async def install_extrarepo(repo, branch, efolder):
             BOTLOG_CHATID,
             "There was a problem in cloning the external repo. please recheck external repo link",
         )
-    if os.path.exists(os.path.join(efolder, "requirements.txt")):
-        rpath = os.path.join(efolder, "requirements.txt")
-        await runcmd(f"pip3 install --no-cache-dir {rpath}")
-    await load_plugins(folder="Legendbot", extfolder=efolder)
+    if os.path.exists(rpath):
+        await runcmd(f"pip3 install --no-cache-dir -r {rpath}")
+    await load_plugins(folder="Legendbot", extfolder=cfolder)
